@@ -8,6 +8,8 @@ public class DNA : MonoBehaviour
     public float r;//red
     public float g;//green
     public float b;//blue
+    public float s;
+
 
     bool dead = false;//onclick
     public float timeToDie = 0;//for finding last person
@@ -33,6 +35,7 @@ public class DNA : MonoBehaviour
         sRenderer = GetComponent<SpriteRenderer>();
         sCollidder = GetComponent<Collider2D>();
         sRenderer.color = new Color(r, b, g);
+        this.transform.localScale = new Vector3(s, s, s);
     }
 
   

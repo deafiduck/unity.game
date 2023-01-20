@@ -36,6 +36,7 @@ public class PopulationManager : MonoBehaviour
             go.GetComponent<DNA>().r = Random.Range(0.0f, 1.0f);
             go.GetComponent<DNA>().b = Random.Range(0.0f, 1.0f);
             go.GetComponent<DNA>().b = Random.Range(0.0f, 1.0f);
+            go.GetComponent<DNA>().s = Random.Range(0.1f, 0.5f);
             population.Add(go);
         }
 
@@ -54,6 +55,8 @@ public class PopulationManager : MonoBehaviour
         offspring.GetComponent<DNA>().r = Random.Range(0, 10) < 5 ? dna1.r : dna2.r;
         offspring.GetComponent<DNA>().g = Random.Range(0, 10) < 5 ? dna1.g : dna2.g;
         offspring.GetComponent<DNA>().b = Random.Range(0, 10) < 5 ? dna1.b : dna2.b;
+        offspring.GetComponent<DNA>().s = Random.Range(0, 10) < 5 ? dna1.s : dna2.s;
+        
         //yarý yarýya þansý var eðer random sayý 10dan küçükse dna1in rengini alýr deðilse dna2 nin rengini alýr
         return offspring;
     }
