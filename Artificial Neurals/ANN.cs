@@ -65,7 +65,17 @@ public class ANN : MonoBehaviour
                     N += layers[i].neurons[j].weights[k] * inputs[k];
                 }
                 N -= layers[i].neurons[j].bias;
-                layers[i].neurons[j].output = ActivationFunction(N);
+
+                if (i == numHidden)
+                {
+                    layers[i].neurons[j].output = ActivationFunctionO(N);
+                }
+                else
+                {
+                    layers[i].neurons[j].output = ActivationFunction(N);
+                }
+
+                //layers[i].neurons[j].output = ActivationFunction(N);
                 outputs.Add(layers[i].neurons[j].output);
             }
         }
@@ -114,7 +124,8 @@ public class ANN : MonoBehaviour
     }
     double ActivationFunction(double value)
     {
-        return Sigmoid(value);
+       // return Sigmoid(value);
+        return ReLu(value);
     }
     double Step(double value)//also call a binary step
     {
@@ -126,5 +137,24 @@ public class ANN : MonoBehaviour
     {
         double k = (double)System.Math.Exp(value);
         return k / (1.0f + k);
+    }
+    double ActivationFunctionO(double value)
+    {
+        //return Sigmoid(value);
+        return ReLu(value);
+    }
+    double TanH(double value)
+    {
+        return (2 * (Sigmoid(2 * value)) - 1);
+    }
+    double ReLu(double value)
+    {
+        if (value > 0) return value;
+        else return 0;
+    }
+    double LeakyReLu(double value)
+    {
+        if (value < 0) return 0.01*value;
+        else return value;
     }
 }
